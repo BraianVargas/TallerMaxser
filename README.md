@@ -17,3 +17,5 @@ pip install SQLAlchemy
 pip install flask_sqlalchemy
 
 pip install flask_SQLAlchemy
+
+pip install mysqlclient

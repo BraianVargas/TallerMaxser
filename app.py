@@ -14,6 +14,32 @@ app.config.from_pyfile("config.py")
 
 from models import Usuarios, Equipos, db
 
+# Section Methods
+def burbuja(lista):
+    cont=0
+    ordenado=False
+    tamano=len(lista)
+    comparaciones=tamano
+    for _ in range(0,tamano):
+        if ordenado==True:
+            break
+        for j in range(0,comparaciones-1):
+            ordenado=True
+            cont=cont+1
+            if lista[j].Fecha < lista[j+1].Fecha:
+                ordenado=False
+                aux=lista[j]
+                lista[j]=lista[j+1]
+                lista[j+1]=aux
+        comparaciones=comparaciones-1
+    return lista
+
+
+
+
+
+
+# Section Routes
 @app.route('/form', methods = ['POST','GET'])
 def form():
     if request.method == 'POST':
@@ -25,8 +51,6 @@ def form():
                              Fecha = date.today(), Owner = userExist.DNI) #Toma los datos del formulario y crea un objeto Equipo basado en el modelo de la base de datos.
             db.session.add(equipo)
             db.session.commit()
-            
-            print("LARGANDO MODAL user exist")
             
             return redirect(url_for('modal', Nombre = str(userExist.Nombre), equipo = equipo.id))
             # return render_template("form.html",user = userExist, equi = equipo)
@@ -90,7 +114,14 @@ def indexAdmin():
 def buscarDNI():
     if "DNI" in session and request.method == 'POST':
         dni = request.form['ToQuery']
-        consulta = db.session.query(Equipos).filter_by(Owner = dni).all() #Trae una lista de todos los equipos cargados
+        cons = db.session.query(Equipos).filter_by(Owner = dni).all() #Trae una lista de todos los equipos cargados
+        if len(cons)>1:
+            if len(cons)>3:
+                consulta = cons[-(len(cons)-5):]
+            consulta = burbuja(consulta)
+        else:
+            consulta = cons
+        print(consulta)
         own = db.session.query(Usuarios).filter_by(DNI = dni).first()
         if own == None:
             return render_template("buscaDNI.html", owner = '' , equipos = '')

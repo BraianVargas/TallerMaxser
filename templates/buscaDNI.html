@@ -1,11 +1,17 @@
 {% extends "admin_template.html" %}
-{% block title %}
-    Administrador - Buscar por DNI
-{% endblock %}
 {% block content %}
 
+<head>
+    {% block head %}
     <link rel="stylesheet" href="../static/css/admin_template.css">
     <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>
+        {% block title %}
+            Administrador - Buscar por DNI
+        {% endblock %}
+    </title>
+    {% endblock %}
+</head>
 
     <form method="POST" style="min-width: 300px;">
         <div class="container-fluid">
@@ -59,7 +65,7 @@
                                 <ul class="list-group ls-none w-50 m-auto">
                                     {% if equipos %}
                                         {% for equipo in equipos %}
-                                            <li id="items" class="list-group-item bg-dark shadow border-warning rounded">
+                                            <li id="items" class="list-group-item bg-dark border-warning rounded">
                                                 <section class="text-align-left">
                                                     <label class="fs-3 text-white">
                                                         Tipo de Equipo:
@@ -70,22 +76,33 @@
                                                         {{equipo.id}}
                                                     </label><br>
                                                     <label class="text-white">
-                                                        <b>
+                                                        Problema:
+                                                        {{equipo.Problema}}
+                                                    </label><br>
+                                                    <label class="text-white">
                                                             Fecha de Ingreso:
-                                                            {{equipo.Fecha}}</b>
+                                                            {{equipo.Fecha}}
                                                     </label><br>
                                                     <label class="text-white">
                                                         Estado: 
                                                     </label>
-                                                    <label class="text-warning">
-                                                        {{equipo.Estado}}
-                                                    </label>
+                                                    {% if equipo.Estado == 'Listo' %}
+                                                        <label class="text-success">
+                                                            {{equipo.Estado}}
+                                                        </label>
+                                                    {% else %}
+                                                        <label class="text-warning">
+                                                            {{equipo.Estado}}
+                                                        </label>
+                                                    {% endif %}
                                                 </section>
-                                                <br>
+                                                <button class="btn btn-success shadow text-white">
+                                                    <i class='bx bxs-edit'>
+                                                    </i>
+                                                        Editar
+                                                </button>
                                             </li>
-                                            <br>
                                         {% endfor %}
-
                                     {% else %}
                                         <li
                                             class="list-group-item"
