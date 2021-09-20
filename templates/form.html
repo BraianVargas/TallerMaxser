@@ -1,0 +1,92 @@
+{% extends "base_template.html" %}
+{% block content %}
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="../static/css/styleForm.css" />
+    <title>{% block title %} Formulario {% endblock %} - MAXSER</title>
+    {% endblock %}
+</head>
+<form method="POST">
+    <div class="container-fluid row justify-content-center">
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="Nombre y Apellido" class="form-control" required=True type="text" name="name"
+                id="IUser">
+            <label for="IUser">Nombre y Apellido: </label>
+        </div>
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="DNI" class="form-control" required=True type="text" name="dni_numb" id="dni">
+            <label for="dni">DNI: </label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="Telefono" class="form-control" required=True type="tel" name="phone_numb" id="phone">
+            <label for="phone">Telefono: </lanel>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="Marca" class="form-control" required=True type="tel" name="modelo" id="marca">
+            <label for="marca">Marca: </label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="Problema" class="form-control" required=True type="tel" name="problema" id="Iproblema">
+            <label for="Iproblema">Problema: </label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <select name="tipo" id="type" class="form-select" required=True aria-label="Default select example">
+                <option selected disabled value="">Seleccionar</option>
+                <option value="Notebook">Notebook</option>
+                <option value="Netbook">Netbook</option>
+                <option value="PC Escritorio">PC Escritorio</option>
+                <option value="AIO">All in One</option>
+                <option value="Impresora">Impresora</option>
+            </select>
+            <label for="type">Tipo</label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <select name="accesorios" id="accesor" class="form-select" required=True
+                aria-label="Default select example">
+                <option selected disabled value="">Seleccionar</option>
+                <option value="Bateria">Bateria</option>
+                <option value="Cargador">Cargador</option>
+                <option value="Cables">Cables</option>
+                <option value="Ninguno">Ninguno</option>
+            </select>
+            <label for="accesor">Accesorios: </label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <input placeholder="Contraseña" class="form-control" type="text" name="password" id="passwd">
+            <label for="passwd">Contraseña: </label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12 col-md-6">
+            <select name="backup" id="backp" class="form-select" required=True aria-label='Default select'>
+                <option selected disabled value="">Seleccionar</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+            <label for="backp">Recuperación de datos: </label>
+        </div>
+    </div>
+    <div class="row container-fluid float justify-content-center">
+        <div class="form-floating col-sm-12 col-md-6">
+            <input class="col-md-12 btn btn-success text-center" type="submit" action="{{ url_for('form') }}" 
+                value="Guardar Datos">
+        </div>
+        
+    </div>
+
+<!-- SECTOR PARA EL MODAL -->
+
+
+<!-- FIN SECTOR PARA EL MODAL -->
+
+</form>
+<div class="d-sm-none d-md-block imagen">
+    <img src="../static/img/taller1.png" width="300px">
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base_template.html" %}
+{% block title %} Administrador - Login {% endblock %}
+{% block content %}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styleBase.css">
+    <link rel="stylesheet" href="../static/css/styleLogin.css">
+</head>
+<form class="container-fluid row d-flex align-items-center justify-content-center" method="POST" action="{{url_for('login')}}">
+    <div class="interior container coll-sm-12 col-md-6 shadow">
+        <h1>Iniciar Sesión</h1>
+        <div class="form-floating col-sm-12">
+            <input placeholder="Usuario" class="form-control " type="text" name="user" id="Us" required>
+            <label for="Us">Usuario</label>
+        </div>
+        <br>
+        <div class="form-floating col-sm-12">
+            <input placeholder="Contraseña" class="form-control " type="password" name="password" id="Psw" required>
+            <label for="Psw">Contraseña</label>
+        </div>
+        <br>
+        <button class="btn btn-success text-center d-flex" type="submit"><span class='icon-save'></span> Ingresar </button>
+    </div>
+        <!-- <div style="background-color: #000;" class="container col-md-3 text-center aside">
+            <h1>LOGIN</h1>
+        </div> -->
+</form>
+{% endblock %}

@@ -1,0 +1,157 @@
+*{
+    font-family: "Fredoka One", sans-serif;
+}
+.nav-link{
+    color: #FE5000;
+}
+body{
+    position: relative;
+    width: 100%;    
+    min-width: 400px;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0%;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 6px 14px;
+    transition: ease-out all 0.4s;
+}
+
+.sidebar.active{
+    transition: ease-in all 0.4s;
+    width: 80px;
+}
+
+.sidebar .logo_content .logo{
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    padding: 1.4em;
+    align-items: center;
+    opacity: 1;
+    pointer-events: none;
+}
+.sidebar.active .logo_content .logo{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.logo_content .logo i{
+    margin-right: 5px;
+    font-size: 2em;
+}
+
+.logo_name{
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.sidebar.active .logo_name{
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+}
+
+.sidebar #btn{
+    color: #FFF;
+    position: absolute;
+    left: 90%;
+    top: 6px;
+    font-size: 1.2em;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+}
+.sidebar #btn:hover{
+    border-radius: 15px;
+    background-color: azure;
+    color: rgb(15, 0, 47);
+}
+
+.sidebar.active #btn{
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+    padding: .2em;
+    left: 1em;
+    transition: ease-in 0.3s all;
+}
+.sidebar.active #btn:hover{
+    font-size: 2.1em;
+    padding: .3em;
+    transition: ease-in-out 0.2s all;
+}
+
+.sidebar .nav_list{
+    margin: 0;
+    padding: 0;
+    left: 1em;
+    justify-content: left;
+}
+
+.sidebar .nav_list li{
+    position: relative;
+    height: 3em;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .nav_list li a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar.active .nav_list li a span{
+    opacity: 0;
+    display: none;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav_list li a:hover{
+    transition: all 0.2s ease-in-out;
+    color: rgb(15, 0, 47);
+    left: 1em;
+    background-color: rgba(170, 170, 170, 0.835);
+}
+.sidebar.active .nav_list li a:hover{
+    justify-content: center;
+    padding: 0;
+}
+
+.sidebar .nav_list li i{
+    font-size: 1.5em;
+    height: 15%;
+    min-width: 15%;
+    border-radius: 15px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.sidebar.active .nav_list li i{
+    transition: ease-in-out 0.3s all;
+    left: 0;
+    padding: 0;
+    font-size: 2em;
+}
+
+.home_content{
+    position: absolute;
+    height: 100%;
+    transition: ease-out all 0.4s;
+    width: calc(100% - 200px);
+    left: 300px;
+}
+
+.active_content{
+    width: calc(100% - 200px);
+    transition: ease-in all 0.4s;
+    left: 80px;
+}

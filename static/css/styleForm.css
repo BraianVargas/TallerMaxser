@@ -1,0 +1,15 @@
+body{
+    /* background-image: url(../img/bg-2.jpg); */
+    background-color: #b2b2b2;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: 50%;
+}
+.form-floating{
+    position: relative;
+    padding: 5px;
+    min-width: 400px;
+    max-width: 700px;
+    /* margin: auto; */
+}

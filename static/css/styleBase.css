@@ -1,0 +1,22 @@
+body{
+    min-height: 1900px;
+    min-width: 600px;
+}
+form{
+    padding-top: 1em;
+}
+header{
+    background: #000;
+}
+.nav-link{
+    color: #FE5000;
+}
+span{
+    color: black;
+}
+.imagen{
+    position: absolute;
+    z-index: -1;
+    bottom: 0%;
+    right: 0%;
+}
