@@ -1,0 +1,45 @@
+{% extends "form.html" %}
+{% block content %}
+<head>
+    {% block head %}
+    <title>{% block title %} Formulario {% endblock %} - MAXSER</title>
+    {% endblock %}
+</head>
+<form class="container justify-content-center" action="{{ url_for('form') }}" methods="[GET, POST]" >
+    <!-- Button trigger modal -->
+    <!-- <button type="button" onload="largaModal()" style="opacity: 1;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    </button> -->
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Ver Comprobante
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content justify-content-center">
+            <div class="modal-header">
+            <h2 class="modal-title" id="staticBackdropLabel"><strong>!ATENCIÓN¡</strong></h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if equi != '' %}
+                    <p>
+                        Guarde el siguiente numero, es el numero de orden de su equipo.
+                        <strong><h4>Cliente:</h4><h5>{{cli}}</h5></strong>
+                        <br>
+                        <strong><h4>ID del equipo: </h4><h5>{{ID}}</h5></strong>
+                        
+                    </p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Understood</button>
+            </div>
+        </div>
+    </div>
+        
+</form>
+{% endblock %}

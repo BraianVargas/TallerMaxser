@@ -1,0 +1,244 @@
+<!-- Este template contiene el codigo para el template del administrador
+donde se verá reflejado el sidebar junto con la barra de navegación en 
+su inicio -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/css/baseAdmin.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+</head>
+<body class="bg-dark white"> 
+    <!-- inicio offcanvas -->
+    <button class="btn btn-black m-2 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <i class='bx bx-menu-alt-left'></i>
+        Menú
+    </button>
+
+    <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+        <div class="container-fluid">
+            <div class="container white ml-0">
+                <h5 class="offcanvas-title" id="offcanvasMenuLabel">
+                    <img class="image-fluid" src="../static/img/logo.png" style="width: 30%; height: auto;" alt="">
+                    Maxser
+                </h5>
+            </div>
+        </div>
+        <button type="button" class="bg-none btn text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class='bx bx-x white fs-2' ></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container-fluid">
+            <div class="container m-auto white">
+                <ul class="list-group list-group-flush" style="margin-top: 1em; list-style: none;">
+                    <li class="list-group-item border-none bg-dark m-1">
+                        <a class="text-decoration-none white" href="{{url_for('indexAdmin')}}">
+                            <i class='fs-2 bx bxs-home' ></i>
+                            <span class="links_name">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item border-none bg-dark m-1">
+                        <a class="text-decoration-none white" href="{{url_for('form')}}">
+                            <i class='fs-2 bx bx-download'></i>
+                            <span class="links_name">Cargar Equipo</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item border-none bg-dark m-1">
+                        <a class="text-decoration-none white" href="{{url_for('indexAdmin')}}">
+                            <i class='fs-2 bx bx-pencil'></i>
+                            <span class="links_name">Editar Datos de equipo</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item border-none bg-dark m-1">
+                        <a class="text-decoration-none white" href="{{url_for('form')}}">
+                            <i class='fs-2 bx bx-trash' ></i>
+                            <span class="links_name">Eliminar</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item border-none bg-dark m-1">
+                        <a class="text-decoration-none white" href="">
+                            <i class='fs-2 bx bx-search-alt' ></i>
+                            <span class="links_name">Buscar Equipo</span>
+                            <ul class="list-group-flush" >
+                                <li class="list-group-item border-none bg-dark m-2">
+                                    <a class="text-decoration-none white" href="{{url_for('buscarDNI') }}">
+                                        <i class='fs-2 bx bx-id-card' ></i>
+                                        <span class="sublink">Por DNI</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-none bg-dark m-2">
+                                    <a class="text-decoration-none white" href="">
+                                        <i class='fs-2 bx bx-mobile-alt' ></i>
+                                        <span class="sublink">Por Telefono</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-none bg-dark m-2">
+                                    <a class="text-decoration-none white" href="">
+                                        <i class='fs-2 bx bx-hash' ></i>
+                                        <span class="sublink">Por numero de orden</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end offcanvas -->
+
+    <!-- <div class="sidebar bg-dark">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bx-wrench'></i>
+                <div class="logo_name bolder">Servicio Técnico</div>
+            </div>
+            <i class='bx bx-menu-alt-left' id="btn" ></i>
+        </div>
+        <ul class="nav_list" style="margin-top: 1em;">
+            <li>
+                <a href="{{url_for('indexAdmin')}}">
+                    <i class='bx bxs-home' ></i>
+                    <span class="links_name">Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('form')}}">
+                    <i class='bx bx-download'></i>
+                    <span class="links_name">Cargar Equipo</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('indexAdmin')}}">
+                    <i class='bx bx-pencil'></i>
+                    <span class="links_name">Editar Datos de equipo</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('form')}}">
+                    <i class='bx bx-trash' ></i>
+                    <span class="links_name">Eliminar</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class='bx bx-search-alt' ></i>
+                    <span class="links_name">Buscar Equipo</span>
+                    <ul class="sublist">
+                        <li>
+                            <a href="{{url_for('buscarDNI') }}">
+                                <i class='bx bx-id-card' ></i>
+                                <span class="sublink">Por DNI</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class='bx bx-mobile-alt' ></i>
+                                <span class="sublink">Por Telefono</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class='bx bx-hash' ></i>
+                                <span class="sublink">Por numero de orden</span>
+                            </a>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="home_content" > -->
+        <!-- comienzo menu header -->
+        <!-- <header class="w-100">
+            <nav class="container-fluid navbar navbar-expand-md navbar-black bg-dark">
+                <div class="container-fluid ">
+                    <button class="navbar-toggler bg-light"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-card-list"
+                            viewBox="0 0 16 16">
+                            <path
+                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                            <path
+                            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                        </svg>
+                    </button>
+                    <div class="collapse nav navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">¿Quienes Somos?</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Ventas Online</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#">Servicio Técnico</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Empresas</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Contacto</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Eventos</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">Catalogo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header> -->
+        <!-- final header menu -->
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let content = document.querySelector(".home_content");
+        let subl = document.querySelector(".sublist");
+        let ico = document.querySelector(".bx");
+        
+        btn.onclick = function(){
+            sidebar.classList.toggle("active");
+            content.classList.toggle("active_content");
+            subl.classList.toggle("collapse");
+        }
+        ico.onclick = function(){
+            sidebar.classList.toggle("active");
+            content.classList.toggle("active_content");
+            subl.classList.toggle("collapse");
+        }
+        
+
+    </script>
+</body>
+</html>

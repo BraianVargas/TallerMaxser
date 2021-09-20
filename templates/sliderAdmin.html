@@ -1,0 +1,123 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/styleBase.css">
+  <!-- <link rel="stylesheet" href="../static/css/sidebars.css"> -->
+  <script src="../static/js/sidebars.js"></script>
+</head>
+<header>
+  <nav class="navbar navbar-expand-md navbar-black bg-dark">
+    <div class="container-fluid ">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list"
+          viewBox="0 0 16 16">
+          <path
+            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+          <path
+            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+        </svg>
+      </button>
+      <div class="collapse nav navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="nav justify-content-end">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">¿Quienes Somos?</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Ventas Online</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link active" href="#">Servicio Técnico</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Empresas</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Eventos</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Catalogo</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<body>
+  <div class="row">
+    <button  class="btn bg-light d-sm-block d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="false" aria-controls="sidebar">
+        <svg xmlns = "http://www.w3.org/2000/svg" width = "16" height = "16" fill = "currentColor" class = "bi bi-card-list"
+        viewBox = "0 0 16 16" > <path
+            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+        <path
+            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+        </svg>
+    </button>
+    <div class="collapse collapse-horizontal shadow d-flex flex-column flex-shrink-1 p-4" id="sidebar" style="z-index:1;height:100vh;width:300px;">
+      <a href="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+        <lord-icon
+            src="https://cdn.lordicon.com/sbiheqdr.json"
+            trigger="loop"
+            colors="primary:#000,secondary:#fe5000"
+            stroke="70"
+            style="width:40px;height:50px">
+        </lord-icon>
+        Servicio Técnico
+      </a>
+
+      <ul class="list-unstyled ps-0">
+        <li class="nav-item">
+          <a href="#" class="btn btn-rounded" aria-current="page">
+            Home
+          </a>
+        </li>
+        <li class="mav-item">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded" href="#buscar-collapse" data-bs-toggle="collapse"
+            data-bs-target="#buscar-collapse" aria-expanded="false" aria-current="true">
+            Buscar equipo
+          </button>
+          <div class="collapse" id="buscar-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="{{url_for('buscarDNI')}}" class="link-dark rounded">Por DNI</a></li>
+              <li><a href="#" class="link-dark rounded">Por Telefono</a></li>
+              <li><a href="#" class="link-dark rounded">Por Orden</a></li>
+              <li><a href="#" class="link-dark rounded">Por Nombre</a></li>
+              <li><a href="#" class="link-dark rounded">Por Fecha</a></li>
+            </ul>
+          </div>
+        </li> 
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>mdo</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9 flex-shrink-1 p-3 bg-white">
+        {% block content %}
+        {% endblock %}
+    </div>
+  </div>
+
+</body>

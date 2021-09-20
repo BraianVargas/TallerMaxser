@@ -1,0 +1,106 @@
+{% extends "admin_template.html" %}
+{% block title %}
+    Administrador - Buscar por DNI
+{% endblock %}
+{% block content %}
+
+    <link rel="stylesheet" href="../static/css/admin_template.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+    <form method="POST" style="min-width: 300px;">
+        <div class="container-fluid">
+            <div class="container row w-100 w-md-50 m-auto justify-content-center">
+                <div class="form-floating col-12 col-md-8">
+                    <input
+                        placeholder="Ingrese DNI"
+                        class="form-control col-12"
+                        required="True"
+                        type="number"
+                        name="ToQuery"
+                        id="IUser">
+                    <label class="text-black" for="IUser">
+                        Ingrese DNI:
+                    </label>
+                </div>
+                <button class="btn btn-primary col-12 col-md-2" type="submit">
+                    <i style="font-size:x-large; margin: auto;" class='bx bx-search-alt'></i>
+                    Buscar
+                </button>
+            </div>
+            <br><br><br>
+            {% if owner == '' %}
+                <h3 class="text-center text-danger pt-5">NO HAY DATO</h3>
+            {% else %}
+                <div class="container row m-auto text-center text-white">
+                    <h3>Datos del Cliente</h3>
+                    <br><br>
+                    <label for="">
+                        Nombre:
+                        <h4>
+                            {{owner.Nombre}}
+                        </h4>
+                    </label>
+                    <label for="">
+                        DNI:
+                        <h4>
+                            {{owner.DNI}}
+                        </h4>
+                    </label>
+                </div>
+                <br>
+                <div class="container row text-center m-auto">
+                    <div class="col-md-12 p-5 bg-dark">
+                        <div class="container">
+                            <div class="row" style="color: #FE5000;">
+                                <h1 class="text-center col-sm-12">
+                                    Equipos ingresados a taller
+                                </h1>
+                                <br><br><br>
+                                <ul class="list-group ls-none w-50 m-auto">
+                                    {% if equipos %}
+                                        {% for equipo in equipos %}
+                                            <li id="items" class="list-group-item bg-dark shadow border-warning rounded">
+                                                <section class="text-align-left">
+                                                    <label class="fs-3 text-white">
+                                                        Tipo de Equipo:
+                                                        {{equipo.Tipo}}
+                                                    </label><br>
+                                                    <label class="fs-3 text-white">
+                                                        N° de Equipo:
+                                                        {{equipo.id}}
+                                                    </label><br>
+                                                    <label class="text-white">
+                                                        <b>
+                                                            Fecha de Ingreso:
+                                                            {{equipo.Fecha}}</b>
+                                                    </label><br>
+                                                    <label class="text-white">
+                                                        Estado: 
+                                                    </label>
+                                                    <label class="text-warning">
+                                                        {{equipo.Estado}}
+                                                    </label>
+                                                </section>
+                                                <br>
+                                            </li>
+                                            <br>
+                                        {% endfor %}
+
+                                    {% else %}
+                                        <li
+                                            class="list-group-item"
+                                            style="height: 150px; min-height: 100px; max-height: 200px;">
+                                            <h1 style="text-align: center; font-size: 2rem;">No se han encontrado pedidos pendientes</h1>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </form>
+
+{% endblock %}
