@@ -71,7 +71,7 @@
                                                         Tipo de Equipo:
                                                         {{equipo.Tipo}}
                                                     </label><br>
-                                                    <label class="fs-3 text-white">
+                                                    <label class="fs-3 text-white" name="lbl-id">
                                                         N° de Equipo:
                                                         {{equipo.id}}
                                                     </label><br>
@@ -90,17 +90,35 @@
                                                         <label class="text-success">
                                                             {{equipo.Estado}}
                                                         </label>
+                                                    {% elif equipo.Estado == 'En espera' %}
+                                                        <label class="text-warning" name="lbl_state">
+                                                            {{equipo.Estado}}
+                                                        </label>
                                                     {% else %}
-                                                        <label class="text-warning">
+                                                        <label class="text-danger" name="lbl_state">
                                                             {{equipo.Estado}}
                                                         </label>
                                                     {% endif %}
                                                 </section>
-                                                <button class="btn btn-success shadow text-white">
+                                                <a class="btn btn-primary shadow text-white">
                                                     <i class='bx bxs-edit'>
                                                     </i>
-                                                        Editar
-                                                </button>
+                                                    Editar
+                                                </a>
+                                                <br><br>
+                                                <div class="row m-auto">
+                                                    <a href="{{ url_for('CambiaEstado', estad = 'Sin Solución', idEquipo = equipo.id, dni = owner.DNI ) }}"
+                                                    class="btn btn-danger shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
+                                                        <i class='fs-4 bx bxs-error-alt'></i>
+                                                    </a>
+                                                    <a class="btn btn-warning shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
+                                                        <i class='fs-4 bx bx-stopwatch'></i>
+                                                    </a>
+                                                    <a class="btn btn-success shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
+                                                        <i class='fs-4 bx bx-check'></i>
+                                                    </a>
+                                                </div>
+
                                             </li>
                                         {% endfor %}
                                     {% else %}
