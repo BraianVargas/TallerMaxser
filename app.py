@@ -34,10 +34,20 @@ def burbuja(lista):
         comparaciones=comparaciones-1
     return lista
 
+@app.route('/changin-state/<estad>/<int:idEquipo>/<int:dni>', methods=['POST', 'GET']) 
+def CambiaEstado(estad, idEquipo, dni):
+    if estad=='Sin Solución':
+        estado = Equipos.query.filter_by(id = idEquipo).first()
+        equi = Equipos.query.filter_by(id = idEquipo).first()
+        equi.Estado = estad
 
+        db.session.add(equi)
+        db.session.commit()
+        print(session['DNI'])
+        dni = db.session['DNI']
 
-
-
+        # db.session.close()
+    return redirect(url_for('buscarDNI', Dni = dni))
 
 # Section Routes
 @app.route('/form', methods = ['POST','GET'])
@@ -66,8 +76,7 @@ def form():
             db.session.add(user)
             db.session.add(equipo)
             db.session.commit()
-            # db.session.close()
-            print("LARGANDO MODAL")
+            db.session.close()
             return redirect(url_for('modal', Nombre = user.Nombre, equipo = equipo.id))
             # return render_template("modal.html")
     else:
@@ -111,24 +120,38 @@ def indexAdmin():
         return redirect(url_for('PreLog'))
 
 @app.route('/buscaDNI/', methods=['POST', 'GET'])
-def buscarDNI():
+def buscarDNI(Dni=''):
     if "DNI" in session and request.method == 'POST':
         dni = request.form['ToQuery']
         cons = db.session.query(Equipos).filter_by(Owner = dni).all() #Trae una lista de todos los equipos cargados
         if len(cons)>1:
             if len(cons)>3:
-                consulta = cons[-(len(cons)-5):]
+                consulta = cons[-((len(cons))-5):]
             consulta = burbuja(consulta)
         else:
             consulta = cons
-        print(consulta)
         own = db.session.query(Usuarios).filter_by(DNI = dni).first()
         if own == None:
             return render_template("buscaDNI.html", owner = '' , equipos = '')
         else:
-            return render_template("buscaDNI.html", owner = own , equipos = consulta)
+            return render_template("buscaDNI.html", DNI= None, owner = own , equipos = consulta)
+    elif Dni != '' and  request.method == 'GET':
+        dni = Dni
+        request.method = 'POST'
+        print(request.method)
+        cons = db.session.query(Equipos).filter_by(Owner = dni).all() #Trae una lista de todos los equipos cargados
+        if len(cons)>1:
+            if len(cons)>3:
+                consulta = cons[-((len(cons))-5):]
+            consulta = burbuja(consulta)
+        else:
+            consulta = cons
+        own = db.session.query(Usuarios).filter_by(DNI = dni).first()
+        if own == None:
+            return render_template("buscaDNI.html", DNI = '', owner = '' , equipos = '')
+        else:
+            return render_template("buscaDNI.html", DNI = dni, owner = own , equipos = consulta)
     elif request.method == 'GET':
-        print("METODO GET")
         return render_template("buscaDNI.html", owner = '', equipos = '')
     else:
         return redirect(url_for('PreLog'))
