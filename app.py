@@ -34,21 +34,29 @@ def burbuja(lista):
         comparaciones=comparaciones-1
     return lista
 
-@app.route('/changin-state/<estad>/<int:idEquipo>/<int:dni>', methods=['POST', 'GET']) 
+@app.route('/changin-state', methods=['POST', 'GET']) 
 def CambiaEstado(estad, idEquipo, dni):
-    if estad=='Sin Solución':
-        estado = Equipos.query.filter_by(id = idEquipo).first()
-        equi = Equipos.query.filter_by(id = idEquipo).first()
-        equi.Estado = estad
+    Dni=request.args.get(dni)
+    estado=request.args.get(estad)
+    own=request.args.get(idEquipo)
+    equip = db.session.query(Equipos).filter_by(Owner = Dni).all() #Trae una lista de todos los equipos cargados
+    if len(equip)>1:
+            consulta = equip[-((len(equip))-5):]
+    if len(equip)>3:
+        consulta = burbuja(consulta)
+    else:
+        consulta = equip
+    own = db.session.query(Usuarios).filter_by(DNI = Dni).first()
 
-        db.session.add(equi)
-        db.session.commit()
-        print(session['DNI'])
-        dni = db.session['DNI']
+    equi = Equipos.query.filter_by(id = own).first()
+    equi.Estado = estad
 
-        # db.session.close()
-    return redirect(url_for('buscarDNI', Dni = dni))
+    db.session.add(equi)
+    db.session.commit()
+    
+    return render_template("buscaDNI.html", DNI= dni, owner = own , equipos = consulta)
 
+    
 # Section Routes
 @app.route('/form', methods = ['POST','GET'])
 def form():
@@ -135,22 +143,6 @@ def buscarDNI(Dni=''):
             return render_template("buscaDNI.html", owner = '' , equipos = '')
         else:
             return render_template("buscaDNI.html", DNI= None, owner = own , equipos = consulta)
-    elif Dni != '' and  request.method == 'GET':
-        dni = Dni
-        request.method = 'POST'
-        print(request.method)
-        cons = db.session.query(Equipos).filter_by(Owner = dni).all() #Trae una lista de todos los equipos cargados
-        if len(cons)>1:
-            if len(cons)>3:
-                consulta = cons[-((len(cons))-5):]
-            consulta = burbuja(consulta)
-        else:
-            consulta = cons
-        own = db.session.query(Usuarios).filter_by(DNI = dni).first()
-        if own == None:
-            return render_template("buscaDNI.html", DNI = '', owner = '' , equipos = '')
-        else:
-            return render_template("buscaDNI.html", DNI = dni, owner = own , equipos = consulta)
     elif request.method == 'GET':
         return render_template("buscaDNI.html", owner = '', equipos = '')
     else:
