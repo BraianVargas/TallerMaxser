@@ -13,7 +13,7 @@
     {% endblock %}
 </head>
 
-    <form method="POST" style="min-width: 300px;">
+    <form method="POST" style="min-width: 300px;" action="{{url_for('buscarDNI')}}">
         <div class="container-fluid">
             <div class="container row w-100 w-md-50 m-auto justify-content-center">
                 <div class="form-floating col-12 col-md-8">
@@ -33,6 +33,10 @@
                     Buscar
                 </button>
             </div>
+        </div>
+    </form>
+    <div class="container-fluid">
+        <div class="row container m-auto">
             <br><br><br>
             {% if owner == '' %}
                 <h3 class="text-center text-danger pt-5">NO HAY DATO</h3>
@@ -106,18 +110,22 @@
                                                     Editar
                                                 </a>
                                                 <br><br>
+                                                <!-- seccion de botones de estado -->
                                                 <div class="row m-auto">
                                                     <a href="{{ url_for('CambiaEstado', estad = 'Sin Solución', idEquipo = equipo.id, dni = owner.DNI ) }}"
                                                     class="btn btn-danger shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
                                                         <i class='fs-4 bx bxs-error-alt'></i>
                                                     </a>
-                                                    <a class="btn btn-warning shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
+                                                    <a href="{{ url_for('CambiaEstado', estad = 'En espera', idEquipo = equipo.id, dni = owner.DNI ) }}"
+                                                    class="btn btn-warning shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
                                                         <i class='fs-4 bx bx-stopwatch'></i>
                                                     </a>
-                                                    <a class="btn btn-success shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
+                                                    <a href="{{ url_for('CambiaEstado', estad = 'Listo', idEquipo = equipo.id, dni = owner.DNI ) }}"
+                                                    class="btn btn-success shadow text-black col-12 col-md-3 m-1 mb-2 m-auto">
                                                         <i class='fs-4 bx bx-check'></i>
                                                     </a>
                                                 </div>
+                                                <!-- End seccion de botones de estado -->
 
                                             </li>
                                         {% endfor %}
@@ -135,7 +143,5 @@
                 </div>
             {% endif %}
         </div>
-
-    </form>
 
 {% endblock %}
